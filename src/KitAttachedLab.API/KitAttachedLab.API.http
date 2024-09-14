@@ -1,0 +1,6 @@
+@KitAttachedLab.API_HostAddress = http://localhost:5224
+
+GET {{KitAttachedLab.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
