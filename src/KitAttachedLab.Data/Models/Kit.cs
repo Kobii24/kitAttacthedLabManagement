@@ -29,13 +29,7 @@ public partial class Kit
 
     public virtual Category Category { get; set; }
 
-    public virtual ICollection<DeliveryDetail> DeliveryDetails { get; set; } = new List<DeliveryDetail>();
-
-    public virtual ICollection<Inventory> Inventories { get; set; } = new List<Inventory>();
-
     public virtual Lab Lab { get; set; }
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
-
-    public virtual ICollection<Support> Supports { get; set; } = new List<Support>();
 }

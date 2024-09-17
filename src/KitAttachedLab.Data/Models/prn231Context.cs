@@ -12,17 +12,8 @@ public partial class prn231Context : DbContext
         : base(options)
     {
     }
-    public prn231Context()
-    {
-        
-    }
+
     public virtual DbSet<Category> Categories { get; set; }
-
-    public virtual DbSet<Delivery> Deliveries { get; set; }
-
-    public virtual DbSet<DeliveryDetail> DeliveryDetails { get; set; }
-
-    public virtual DbSet<Inventory> Inventories { get; set; }
 
     public virtual DbSet<Kit> Kits { get; set; }
 
@@ -36,13 +27,7 @@ public partial class prn231Context : DbContext
 
     public virtual DbSet<Sale> Sales { get; set; }
 
-    public virtual DbSet<Support> Supports { get; set; }
-
-    public virtual DbSet<SupportDetail> SupportDetails { get; set; }
-
     public virtual DbSet<User> Users { get; set; }
-
-    public virtual DbSet<Warehouse> Warehouses { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -56,74 +41,6 @@ public partial class prn231Context : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
-        });
-
-        modelBuilder.Entity<Delivery>(entity =>
-        {
-            entity.ToTable("delivery");
-
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
-            entity.Property(e => e.Date)
-                .HasColumnType("datetime")
-                .HasColumnName("date");
-            entity.Property(e => e.OrderId).HasColumnName("order_id");
-            entity.Property(e => e.Status)
-                .HasMaxLength(50)
-                .HasColumnName("status");
-            entity.Property(e => e.WarehouseId).HasColumnName("warehouse_id");
-
-            entity.HasOne(d => d.Order).WithMany(p => p.Deliveries)
-                .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK_delivery_order");
-
-            entity.HasOne(d => d.Warehouse).WithMany(p => p.Deliveries)
-                .HasForeignKey(d => d.WarehouseId)
-                .HasConstraintName("FK_delivery_warehouse");
-        });
-
-        modelBuilder.Entity<DeliveryDetail>(entity =>
-        {
-            entity.ToTable("delivery_detail");
-
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
-            entity.Property(e => e.DeliveryId).HasColumnName("delivery_id");
-            entity.Property(e => e.Description)
-                .HasColumnType("text")
-                .HasColumnName("description");
-            entity.Property(e => e.KitId).HasColumnName("kit_id");
-            entity.Property(e => e.Quantity).HasColumnName("quantity");
-
-            entity.HasOne(d => d.Delivery).WithMany(p => p.DeliveryDetails)
-                .HasForeignKey(d => d.DeliveryId)
-                .HasConstraintName("FK_delivery_detail_delivery");
-
-            entity.HasOne(d => d.Kit).WithMany(p => p.DeliveryDetails)
-                .HasForeignKey(d => d.KitId)
-                .HasConstraintName("FK_delivery_detail_kit");
-        });
-
-        modelBuilder.Entity<Inventory>(entity =>
-        {
-            entity.ToTable("Inventory");
-
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
-            entity.Property(e => e.KitId).HasColumnName("kit_id");
-            entity.Property(e => e.Quantity).HasColumnName("quantity");
-            entity.Property(e => e.WarehouseId).HasColumnName("warehouse_id");
-
-            entity.HasOne(d => d.Kit).WithMany(p => p.Inventories)
-                .HasForeignKey(d => d.KitId)
-                .HasConstraintName("FK_Inventory_kit");
-
-            entity.HasOne(d => d.Warehouse).WithMany(p => p.Inventories)
-                .HasForeignKey(d => d.WarehouseId)
-                .HasConstraintName("FK_Inventory_warehouse");
         });
 
         modelBuilder.Entity<Kit>(entity =>
@@ -290,46 +207,6 @@ public partial class prn231Context : DbContext
                 .HasConstraintName("FK_sale_order");
         });
 
-        modelBuilder.Entity<Support>(entity =>
-        {
-            entity.ToTable("support");
-
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
-            entity.Property(e => e.KitId).HasColumnName("kit_id");
-            entity.Property(e => e.NumberSupport).HasColumnName("numberSupport");
-            entity.Property(e => e.RuleSupport)
-                .HasColumnType("text")
-                .HasColumnName("ruleSupport");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-
-            entity.HasOne(d => d.Kit).WithMany(p => p.Supports)
-                .HasForeignKey(d => d.KitId)
-                .HasConstraintName("FK_support_kit");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Supports)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK_support_user");
-        });
-
-        modelBuilder.Entity<SupportDetail>(entity =>
-        {
-            entity.ToTable("support_detail");
-
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
-            entity.Property(e => e.Description)
-                .HasColumnType("text")
-                .HasColumnName("description");
-            entity.Property(e => e.SupportId).HasColumnName("support_id");
-
-            entity.HasOne(d => d.Support).WithMany(p => p.SupportDetails)
-                .HasForeignKey(d => d.SupportId)
-                .HasConstraintName("FK_support_detail_support");
-        });
-
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_user_1");
@@ -365,21 +242,6 @@ public partial class prn231Context : DbContext
             entity.HasOne(d => d.Role).WithMany(p => p.Users)
                 .HasForeignKey(d => d.RoleId)
                 .HasConstraintName("FK_user_role");
-        });
-
-        modelBuilder.Entity<Warehouse>(entity =>
-        {
-            entity.ToTable("warehouse");
-
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
-            entity.Property(e => e.Location)
-                .HasMaxLength(50)
-                .HasColumnName("location");
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
-                .HasColumnName("name");
         });
 
         OnModelCreatingPartial(modelBuilder);

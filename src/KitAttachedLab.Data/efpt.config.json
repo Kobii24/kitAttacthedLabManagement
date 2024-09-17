@@ -19,18 +19,6 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[delivery]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[delivery_detail]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[Inventory]",
-         "ObjectType": 0
-      },
-      {
          "Name": "[dbo].[kit]",
          "ObjectType": 0
       },
@@ -55,19 +43,7 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[support]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[support_detail]",
-         "ObjectType": 0
-      },
-      {
          "Name": "[dbo].[user]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[warehouse]",
          "ObjectType": 0
       }
    ],

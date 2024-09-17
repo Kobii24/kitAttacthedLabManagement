@@ -27,8 +27,6 @@ public partial class Order
 
     public string Phone { get; set; }
 
-    public virtual ICollection<Delivery> Deliveries { get; set; } = new List<Delivery>();
-
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
     public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
