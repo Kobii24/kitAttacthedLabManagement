@@ -3,25 +3,17 @@
 using System;
 using System.Collections.Generic;
 
-namespace KitAttachedLab.Data.Models;
+namespace KitAttachedLab.Data.Entities;
 
-public partial class OrderDetail
+public partial class Sale
 {
     public int Id { get; set; }
 
     public int? OrderId { get; set; }
 
-    public int? KitId { get; set; }
-
-    public decimal? TotalAmount { get; set; }
-
     public int? Quantity { get; set; }
 
-    public string Description { get; set; }
-
-    public decimal? Price { get; set; }
-
-    public virtual Kit Kit { get; set; }
+    public decimal? TotalAmount { get; set; }
 
     public virtual Order Order { get; set; }
 }

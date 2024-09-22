@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace KitAttachedLab.Data.Models;
+namespace KitAttachedLab.Data.Entities;
 
 public partial class Category
 {

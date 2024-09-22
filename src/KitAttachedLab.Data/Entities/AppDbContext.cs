@@ -4,11 +4,11 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace KitAttachedLab.Data.Models;
+namespace KitAttachedLab.Data.Entities;
 
-public partial class prn231Context : DbContext
+public partial class AppDbContext : DbContext
 {
-    public prn231Context(DbContextOptions<prn231Context> options)
+    public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
     {
     }
