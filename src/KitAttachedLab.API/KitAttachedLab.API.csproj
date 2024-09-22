@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KitAttachedLab.Business\KitAttachedLab.Business.csproj" />
+    <ProjectReference Include="..\KitAttachedLab.Repository\KitAttachedLab.Repository.csproj" />
   </ItemGroup>
 
 </Project>

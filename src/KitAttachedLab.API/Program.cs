@@ -1,4 +1,5 @@
-using KitAttachedLab.Data.Models;
+using KitAttachedLab.Data.Entities;
+using KitAttachedLab.Repository.Extension;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,8 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 //builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<Prn231Context>(options
+builder.Services.AddDbContext<AppDbContext>(options
     => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.RegisterDI();
+
 
 var app = builder.Build();
 

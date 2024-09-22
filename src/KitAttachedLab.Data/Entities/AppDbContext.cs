@@ -12,7 +12,10 @@ public partial class AppDbContext : DbContext
         : base(options)
     {
     }
-
+    public AppDbContext()
+    {
+        
+    }
     public virtual DbSet<Category> Categories { get; set; }
 
     public virtual DbSet<Kit> Kits { get; set; }
